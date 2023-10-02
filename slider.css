@@ -21,7 +21,7 @@
     /* line-height: 60px; */
     margin: 10px auto;
     /* letter-spacing: -.07em; */
-    text-shadow: white 2px 2px 2px;
+    /* text-shadow: white 2px 2px 2px; */
 }
 input[type="range"] {
   display: block;
