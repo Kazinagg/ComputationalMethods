@@ -1,0 +1,77 @@
+.container {
+  width: 60%;
+  margin: 1rem auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.output-container {
+  text-align: center;
+}
+
+#result {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  resize: none;
+}
+
+h1 {
+  text-align: center;
+  color: #5a67f4;
+  padding: 20px 0;
+}
+
+.input-container {
+  margin-bottom: 20px;
+}
+
+.label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#matrix {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#matrix td {
+  padding: 5px;
+  /* border: 1px solid #ccc; */
+}
+
+.matrix-input {
+  width: 50px;
+  padding: 5px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  text-align: right;
+}
+
+.matrix-input-freeVals {
+  width: 50px;
+  padding: 5px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+
+.button-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.output-container {
+  text-align: center;
+}/*# sourceMappingURL=container.css.map */
