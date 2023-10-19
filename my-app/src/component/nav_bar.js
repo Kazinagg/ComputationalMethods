@@ -17,6 +17,9 @@ const NavigationBar = () => {
                 <li className="navbar__item">
                 <Link to="/page3" className="navbar__link">Л3<i data-feather="users"></i><span>Отделение и уточнение корней уравнения методом половинного деления</span></Link>        
                 </li>
+                <li className="navbar__item">
+                <Link to="/L4" className="navbar__link">Л4<i data-feather="users"></i><span>Лабораторная работа нелинейные уравнения</span></Link>        
+                </li>
             </ul>
             </nav>
         </>

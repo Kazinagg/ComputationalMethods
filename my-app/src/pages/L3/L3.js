@@ -40,14 +40,10 @@ const L3 = () => {
 
     return (
         <div>
-            <div className="container">
-                <div className="output-container">
-                    <h1>Отделение и уточнение корней уравнения методом половинного деления</h1>
-                    <h2>sin(x) - 0.2 * x</h2>
-                    <label for="result">Результат:</label><br/>
-                    <textarea id="result" rows="5" cols="30" readonly value={root}></textarea>
-                </div>
-            </div>
+            <h1>Отделение и уточнение корней уравнения методом половинного деления</h1>
+            <h2>sin(x) - 0.2 * x</h2>
+            <label htmlFor="result">Результат:</label><br/>
+            <textarea id="result" rows="5" cols="30" readOnly value={root}></textarea>
         </div>
     )
 };

@@ -1,0 +1,247 @@
+$DFeol: #3d46a7;
+$LFeol: #5a67f4;
+
+:root {
+  --primary-light: #8abdff;
+  --primary: #6d5dfc;
+  --primary-dark: #5b0eeb;
+  
+  --white: #FFFFFF;
+  --greyLight-1: #E4EBF5;
+  --greyLight-2: #445da7;
+  --greyLight-3: #bec8e4;
+  --greyDark: #9baacf;
+}
+$shadow: .3rem .3rem .6rem var(--greyLight-2), 
+-.2rem -.2rem .5rem var(--white);
+$inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2), 
+inset -.2rem -.2rem .5rem var(--white);
+
+
+select {
+    /* Ширина селекта */
+    width: 200px;
+    /* Высота селекта */
+    height: 40px;
+    /* Цвет фона селекта */
+    background-color: $LFeol;
+    /* Цвет текста селекта */
+    color: #ffffff;
+    /* Размер и стиль шрифта селекта */
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    /* Отступы внутри селекта */
+    padding: 10px;
+    /* Граница селекта */
+    border: none;
+    /* Скругление углов селекта */
+    border-radius: 10px;
+    /* Стиль стрелки селекта */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23333333" viewBox="0 0 16 16"><path d="M7.247,11.14,2.451,5.658A.785.785,0,0,1,3.106,4.5H12.894a.785.785,0,0,1,.655,1.158Z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+
+    box-shadow: $shadow;
+  cursor: pointer;
+  transition: .3s ease;
+  grid-column: 1 / 2;
+  grid-row: 4 / 5;
+  background: var(--primary);
+  box-shadow:inset .2rem .2rem 1rem var(--primary-light), 
+            inset -.2rem -.2rem 1rem var(--primary-dark),
+            $shadow;
+  color: var(--greyLight-1);
+    &:hover { color: var(--white); }
+    &:focus {
+      box-shadow:inset .2rem .2rem 1rem var(--primary-dark), 
+              inset -.2rem -.2rem 1rem var(--primary-light);
+    }
+  }
+  
+  /* Стили для опций селекта */
+  select option {
+    /* Цвет фона опций */
+    background-color: $LFeol;
+  }
+  
+  /* Стили для выбранной опции селекта */
+  select option:checked {
+    /* Цвет фона выбранной опции */
+    background-color: $DFeol;
+;
+  }
+.duo-container{
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+    label {
+    /* Ширина метки */
+    width: 200px;
+    /* Высота метки */
+    height: 40px;
+    /* Цвет фона метки */
+    background-color: $DFeol;
+    /* Цвет текста метки */
+    color: #333333;
+    /* Размер и стиль шрифта метки */
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    /* Отступы внутри метки */
+    // padding: 12px;
+    /* Граница метки */
+    border: none;
+    /* Скругление углов метки */
+    border-radius: 10px 0px 0px 10px;
+    /* Выравнивание текста метки */
+    text-align: center;
+    color: #ffffff;
+    
+    
+  }
+
+  input[type="number"] {
+    /* Ширина поля ввода */
+    width: 200px;
+    /* Высота поля ввода */
+    // height: 40px;
+    /* Цвет фона поля ввода */
+    background-color: $LFeol;
+    /* Цвет текста поля ввода */
+    color: #ffffff;
+    /* Размер и стиль шрифта поля ввода */
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    /* Отступы внутри поля ввода */
+    /* padding: 0px 10px 10px 0px; */
+    /* Граница поля ввода */
+    border-style: none;
+    outline: none;
+    /* Скругление углов поля ввода */
+    border-radius: 0px 10px 10px 0px;
+    box-shadow: $shadow;
+  cursor: pointer;
+  transition: .3s ease;
+  grid-column: 1 / 2;
+  grid-row: 4 / 5;
+  background: var(--primary);
+  box-shadow:inset .2rem .2rem 1rem var(--primary-light), 
+            inset -.2rem -.2rem 1rem var(--primary-dark),
+            $shadow;
+  color: var(--greyLight-1);
+    &:hover { color: var(--white); }
+    &:focus {
+      box-shadow:inset .2rem .2rem 1rem var(--primary-dark), 
+              inset -.2rem -.2rem 1rem var(--primary-light);
+    }
+  }
+}
+  
+
+
+
+/*  BUTTONS  */
+button {
+  width: 15rem;
+  height: 4rem;
+  border-radius: 1rem;
+  box-shadow: $shadow;
+  cursor: pointer;
+  transition: .3s ease;
+  grid-column: 1 / 2;
+  grid-row: 4 / 5;
+  background: var(--primary);
+  box-shadow:inset .2rem .2rem 1rem var(--primary-light), 
+            inset -.2rem -.2rem 1rem var(--primary-dark),
+            $shadow;
+  color: var(--greyLight-1);
+
+  &:hover { color: var(--white); }
+  &:active {
+    box-shadow:inset .2rem .2rem 1rem var(--primary-dark), 
+            inset -.2rem -.2rem 1rem var(--primary-light);
+  }
+  font-size: 1.1rem;
+
+}
+
+ 
+  
+// :root {
+//   --primary-light: #8abdff;
+//   --primary: #6d5dfc;
+//   --primary-dark: #5b0eeb;
+  
+//   --white: #FFFFFF;
+//   --greyLight-1: #E4EBF5;
+//   --greyLight-2: #c8d0e7;
+//   --greyLight-3: #bec8e4;
+//   --greyDark: #9baacf;
+// }
+  
+//   $shadow: .3rem .3rem .6rem var(--greyLight-2), 
+//   -.2rem -.2rem .5rem var(--white);
+//   $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2), 
+//   inset -.2rem -.2rem .5rem var(--white);
+//   *, *::before, *::after {
+//     margin: 0;
+//     padding: 0;
+//     box-sizing: inherit;
+//   }
+
+//   .form {
+//     grid-column: 3 / 4;
+//     grid-row: 3 / 4;
+  
+//     &__input {
+//       width: 20.4rem;
+//       height: 4rem;
+//       border: none;
+//       border-radius: 1rem;
+//       font-size: 1.4rem;
+//       padding-left: 1.4rem;
+//       box-shadow: $inner-shadow;
+//       background: none;
+//       font-family: inherit;
+//       color: var(--greyDark);
+  
+//       &::placeholder { color: var(--greyLight-3); }
+//       &:focus { outline: none; box-shadow: $shadow; }
+//     }
+    
+//   }
+  
+//   /*  SEARCH  */
+ 
+//   .search {
+//     grid-column: 3 / 4;
+//     grid-row: 2 / 3;
+//     position: relative;
+//     display: flex;
+//     align-items: center;
+  
+//     &__input {
+//       width: 20.4rem;
+//       height: 4rem;
+//       border: none;
+//       border-radius: 1rem;
+//       font-size: 1.4rem;
+//       padding-left: 3.8rem;
+//       box-shadow: $inner-shadow;
+//       background: none;
+//       font-family: inherit;
+//       color: var(--greyDark);
+  
+//       &::placeholder { color: var(--greyLight-3); }
+//       &:focus { 
+//         outline: none; 
+//         box-shadow: $shadow; 
+  
+//          + .search__icon {
+//           color: var(--primary);
+//         }
+//       }
+//     }
+//   }
