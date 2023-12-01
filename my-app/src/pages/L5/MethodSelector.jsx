@@ -4,11 +4,11 @@ import Lagrange from './Methods/Lagrange';
 import Splane from './Methods/Splane';
 
 
-const data = {
-  k: Array.from({length: 20}, (_, i) => i + 1),
-  x_k: Array.from({length: 20}, (_, i) => (0.1 * (i + 1)).toFixed(1)),
-  y_k: [2.18, 2.43 ,2.40, 2.43, 2.65, 2.75, 2.67, 2.66, 2.63, 2.75, 2.41, 2.24, 2.12, 1.74, 1.57, 1.17, 0.96, 0.63, 0.25, 0.01]
-};
+const data = Array.from({length: 20}, (_, i) => ({
+  x: (0.1 * (i + 1)).toFixed(1),
+  y: [2.18, 2.43 ,2.40, 2.43, 2.65, 2.75, 2.67, 2.66, 2.63, 2.75, 2.41, 2.24, 2.12, 1.74, 1.57, 1.17, 0.96, 0.63, 0.25, 0.01][i]
+}));
+
 
 
 //import './L4.css';

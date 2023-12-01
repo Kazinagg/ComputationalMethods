@@ -1,3 +1,5 @@
+@import "~react-vis/dist/style";
+
 .container {
     margin: 1rem 0px 0px 10em;
     display: flex;

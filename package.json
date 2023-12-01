@@ -4,6 +4,8 @@
     "@amcharts/amcharts5-fonts": "^5.0.1",
     "@amcharts/amcharts5-geodata": "^5.1.1",
     "chart.js": "^4.4.0",
-    "react-chartjs-2": "^5.2.0"
+    "react-chartjs-2": "^5.2.0",
+    "react-vis": "^1.12.1",
+    "recharts": "^2.10.3"
   }
 }

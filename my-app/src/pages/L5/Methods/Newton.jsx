@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import { Doughnut } from 'react-chartjs-2';
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+//import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
+import {XYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries} from 'react-vis';
+
+
 
 
 // function newtonInterpolation(data) {
@@ -27,17 +28,33 @@ import react from '@vitejs/plugin-react';
 //   };
 // }
 const Newton = ({data}) => {
-  const [dano, setData] = useState(data); // Используйте ваши данные
-
+  const factorFunc = (num) => {
+    return (num > 1) ? num *= factorFunc(num - 1) : num;
+  };
+//  const [dano, setData] = useState(data); // Используйте ваши данные
   //  const newtonPolynomial = newtonInterpolation(data);
-
+  const h = data[0].x - data[1].x;
+  const N = (x) =>{
+    for (let i = 0; i < 9; i++) {
+      (d_y[n])/(factorFunc(n)*h))*(x-x_n-1)
+    }
+    return 1 //(d_y[n])/(factorFunc(n)*h))*(x-x_n-1)
+  }
   return (
     <div>
       <h1>Интерполяционный полином Ньютона</h1>
-      <Doughnut data={dano} />
-      <p>{dano.k }</p>
-      <p>{dano.x_k}</p>
-      <p>{dano.y_k}</p>
+
+      <XYPlot
+        width={300}
+        height={300}>
+        <HorizontalGridLines />
+        <LineSeries data={data}/>
+        <XAxis />
+        <YAxis />
+      </XYPlot>
+
+      <p>{data[0].x}</p>
+      <p>{data[0].y}</p>
     </div>
     );
 };
