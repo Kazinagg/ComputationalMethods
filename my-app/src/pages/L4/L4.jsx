@@ -7,6 +7,8 @@ class L4 extends Component {
             <div>
                 <h1>Решение неленейных уравнений</h1>
                 <MethodSelector />
+                {/* <h1>Нахождение сходимости</h1>
+                <Сonvergencer /> */}
             </div>
         );
     }

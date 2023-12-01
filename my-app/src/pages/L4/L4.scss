@@ -1,12 +1,15 @@
 $DFeol: #3d46a7;
 $LFeol: #5a67f4;
+body{
+  background-image: url('https://vk.com/doc226246374_670490366');
+}
 
 :root {
   --primary-light: #8abdff;
   --primary: #6d5dfc;
   --primary-dark: #5b0eeb;
   
-  --white: #FFFFFF;
+  --white: #e4e1ff;
   --greyLight-1: #E4EBF5;
   --greyLight-2: #445da7;
   --greyLight-3: #bec8e4;
@@ -19,6 +22,8 @@ inset -.2rem -.2rem .5rem var(--white);
 
 
 select {
+  border-style: none;
+    outline: none;
     /* Ширина селекта */
     width: 200px;
     /* Высота селекта */
@@ -54,7 +59,10 @@ select {
             inset -.2rem -.2rem 1rem var(--primary-dark),
             $shadow;
   color: var(--greyLight-1);
-    &:hover { color: var(--white); }
+    &:hover { color: var(--white); 
+      box-shadow:inset .2rem .2rem 1rem var(--primary-light), 
+                inset -.2rem -.2rem 1rem var(--primary-dark);
+    }
     &:focus {
       box-shadow:inset .2rem .2rem 1rem var(--primary-dark), 
               inset -.2rem -.2rem 1rem var(--primary-light);
@@ -128,8 +136,7 @@ select {
   grid-row: 4 / 5;
   background: var(--primary);
   box-shadow:inset .2rem .2rem 1rem var(--primary-light), 
-            inset -.2rem -.2rem 1rem var(--primary-dark),
-            $shadow;
+            inset -.2rem -.2rem 1rem var(--primary-dark);
   color: var(--greyLight-1);
     &:hover { color: var(--white); }
     &:focus {

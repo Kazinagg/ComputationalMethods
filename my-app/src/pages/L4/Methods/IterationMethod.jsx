@@ -1,49 +1,67 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 
 const IterationMethod = () => {
-  const [x0, setX0] = useState(0);
-  const [epsilon, setEpsilon] = useState(0.001);
-  const [result, setResult] = useState(null);
+  const [x0, setX0] = useState(0.01); // Погрешность
+  const [result, setResult] = useState(null); // Результат решения
+  const [initialApprox, setInitialApprox] = useState(0); // Начальное приближение
+
+  const calculateFx = (x) => {
+    return Math.sin(x) + Math.pow(x, 2) - 1; // Значение функции
+  };
+
+  // Инициализация начального приближения с использованием метода половинного деления
+  useEffect(() => {
+    let x = 0;
+    let step = 0.1;
+    while (true) {
+      let fx = calculateFx(x);
+      let fxStep = calculateFx(x + step);
+
+      // Проверяем, поменялся ли знак
+      if (fx * fxStep < 0) {
+        setInitialApprox((x + x + step) / 2);
+        break;
+      }
+
+      x += step;
+    }
+  }, []);
 
   const solveEquation = () => {
-    const maxIterations = 1000; // Максимальное количество итераций (чтобы избежать зацикливания)
-
-    // Переводим введенные значения в числа
-    const initialGuess = parseFloat(x0);
-    const tolerance = parseFloat(epsilon);
-
-    // Функция для итераций
-    const iterate = (x) => Math.sin(x) + Math.pow(x, 2) - 1;
-
-    let currentX = initialGuess;
+    let x = initialApprox; // Начальное приближение
+    let error = x0; // Погрешность
+    let maxIterations = 1000; // Максимальное количество итераций
 
     for (let i = 0; i < maxIterations; i++) {
-      const nextX = iterate(currentX);
+      let fx = calculateFx(x); // Значение функции
+      let dfx = Math.cos(x) + 2 * x; // Производная функции
 
-      if (Math.abs(nextX - currentX) < tolerance) {
-        setResult(nextX);
+      let newX = x - fx / dfx; // Новое приближение
+
+      if (Math.abs(newX - x) < error) {
+        setResult(newX);
         return;
       }
 
-      currentX = nextX;
+      x = newX;
     }
 
-    setResult('Не удалось найти корень, достигнув максимального числа итераций.');
+    setResult("Ошибка: не удалось найти корень за заданное количество итераций");
   };
 
   return (
     <div>
       <h2>Метод итераций</h2>
-      <div className='duo-container'>
-        <label>Начальное приближение (x0):</label>
-        <input type="number" value={x0} onChange={(e) => setX0(e.target.value)} />
-      </div>
-      <div className='duo-container'>
+      <div className="duo-container">
         <label>Точность (ε):</label>
-        <input type="number" value={epsilon} onChange={(e) => setEpsilon(e.target.value)} />
+        <input
+          type="number"
+          value={x0}
+          onChange={(e) => setX0(parseFloat(e.target.value))}
+        />
       </div>
       <button onClick={solveEquation}>Решить</button>
-      {result !== null && <p>{typeof result === 'string' ? result : `Корень уравнения: ${result}`}</p>}
+     {result !== null && <p>{typeof result === 'string' ? result : `Корень уравнения: ${result}`}</p>}
     </div>
   );
 };

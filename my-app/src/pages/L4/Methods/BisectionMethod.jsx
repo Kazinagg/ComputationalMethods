@@ -1,53 +1,45 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
 const BisectionMethod = () => {
-  const [a, setA] = useState(0);
-  const [b, setB] = useState(1);
   const [epsilon, setEpsilon] = useState(0.01);
   const [result, setResult] = useState(null);
 
+
   const solveEquation = () => {
-    let aVal = parseFloat(a); // Используем другие имена переменных
-    let bVal = parseFloat(b);
-
-    let f_a = Math.sin(aVal) + Math.pow(aVal, 2) - 1;
-    let f_b = Math.sin(bVal) + Math.pow(bVal, 2) - 1;
-
-    while ((bVal - aVal) / 2 > epsilon) {
-      let c = (aVal + bVal) / 2;
-      let f_c = Math.sin(c) + Math.pow(c, 2) - 1;
-
-      if (f_c === 0) {
-        setResult(c);
-        return;
-      }
-
-      if (f_c * f_a < 0) {
-        bVal = c;
-        f_b = f_c;
-      } else {
-        aVal = c;
-        f_a = f_c;
-      }
+    function f(x) {
+      return Math.sin(x) + Math.pow(x, 2) - 1;
     }
 
-    setResult((aVal + bVal) / 2);
+    let root = [];
+    for (let i = 0.0; i < 3.0; i += 0.1) {
+      if (f(i) * f(i + 0.1) < 0)
+        root.push([i, i + 0.1]);
+    }
+
+    function halfDivision(a, b, f, epsilon) {
+      let middle;
+      while ((b - a) / 2.0 > epsilon) {
+        middle = (a + b) / 2.0;
+        if (f(a) * f(middle) <= 0) {
+          b = middle;
+        } else {
+          a = middle;
+        }
+      }
+      return (a + b) / 2.0;
+    }
+
+    root = root.map(([a, b]) => halfDivision(a, b, f, epsilon));
+    setResult(root);
   };
+  // root = root.map(([a,b]) => halfDivision(a, b, f, epsilon));
 
   return (
     <div>
       <h2>Метод дихотомии</h2>
       <div className='duo-container'>
-        <label>Начальная граница интервала (a):</label>
-        <input type="number" value={a} onChange={(e) => setA(e.target.value)} />
-      </div>
-      <div className='duo-container'>
-        <label>Конечная граница интервала (b):</label>
-        <input type="number" value={b} onChange={(e) => setB(e.target.value)} />
-      </div>
-      <div className='duo-container'>
         <label>Точность (ε):</label>
-        <input type="number" value={epsilon} onChange={(e) => setEpsilon(e.target.value)} />
+        <input type="number" value={epsilon} onChange={(e) => setEpsilon(e.target.value)}/>
       </div>
       <button onClick={solveEquation}>Решить</button>
       {result && <p>Корень уравнения: {result}</p>}
