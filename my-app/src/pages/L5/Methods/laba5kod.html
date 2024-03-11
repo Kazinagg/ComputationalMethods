@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Графики интерполяционных полиномов</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+</head>
+<body>
+<canvas id="startChart" width="600" height="500"></canvas>
+<canvas id="lagrangeChart" width="600" height="500"></canvas>
+<canvas id="newtonChart" width="600" height="500"></canvas>
+
+<script>
+    var x = [];
+    for (var i = 0.0; i <= 2.0; i+= 0.1){
+        x.push(i);
+    }
+
+    var xi = [];
+    for (var i = 0.0; i <= 1.95; i+= 0.05){
+        xi.push(i);
+    }
+
+    var y = [2.18, 2.43, 2.4, 2.43, 2.65, 2.75, 2.67, 2.66, 2.63, 2.75, 2.41, 2.24, 2.12, 1.74, 1.57, 1.17, 0.96, 0.63, 0.25, 0.01];
+
+    // Лагранж
+    var lagrangeValues = lagrangeInterpolation(x, y, xi);
+
+    var ctx1 = document.getElementById('startChart').getContext('2d');
+    var startChart = new Chart(ctx1, {
+        type: 'line',
+        data: {
+            labels: x,
+            datasets: [{
+                label: 'Исходные точки',
+                data: y,
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1,
+                pointRadius: 1,
+                pointBackgroundColor: 'rgba(54, 162, 235, 1)'
+            }]
+        },
+        options: {
+            responsive: false
+        }
+    });
+    var ctx2 = document.getElementById('lagrangeChart').getContext('2d');
+
+    var lagrangeChart = new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: xi,
+            datasets: [{
+                label: 'Интерполяционный полином Лагранжа',
+                data: lagrangeValues,
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1,
+                pointRadius: 1,
+                pointBackgroundColor: 'rgba(54, 162, 235, 1)'
+            }]
+        },
+        options: {
+            responsive: false
+        }
+    });
+
+    // Ньютон
+    var newtonValues = newtonInterpolation(x, y, xi);
+
+    var ctx3 = document.getElementById('newtonChart').getContext('2d');
+    var newtonChart = new Chart(ctx3, {
+        type: 'line',
+        data: {
+            labels: xi,
+            datasets: [{
+                label: 'Интерполяционный полином Ньютона',
+                data: newtonValues,
+                borderColor: 'rgba(255, 206, 86, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: false
+        }
+    });
+
+
+    function lagrangeInterpolation(x, y, xi) {
+        var n = x.length;
+        var m = xi.length;
+        var l = [];
+        var lagrangeValues = [];
+
+        for(let c = 0; c < m; c++){
+            lagrangeValues[c] = 0;
+            for(let i = 0; i < n; i++){
+                l[i] = 1;
+                for(let j = 0; j < n; j++){
+                    if(i !== j)
+                        l[i] *= (xi[c] - x[j]) / (x[i] - x[j]);
+                }
+            }
+            for(let k = 0; k < n; k++){
+                lagrangeValues[c] += l[k] * y[k];
+            }
+        }
+        console.log(l);
+        return lagrangeValues;
+    }
+
+    function dividedDifferences(x, y) {
+        var n = x.length;
+        var f = [];
+        for (var i = 0; i < n; i++) {
+            f.push([]);
+            f[i][0] = y[i];
+        }
+        for (var j = 1; j < n; j++) {
+            for (var i = 0; i < n - j; i++) {
+                f[i][j] = (f[i + 1][j - 1] - f[i][j - 1]) / (x[i + j] - x[i]);
+            }
+        }
+        var result = [];
+        for (var i = 0; i < n; i++) {
+            result.push(f[0][i]);
+        }
+        return result;
+    }
+
+    function newtonInterpolation(x, y, xi) {
+        var n = x.length;
+        var m = xi.length;
+        var f = dividedDifferences(x, y);
+        var newtonValues = [];
+        for (var i = 0; i < m; i++) {
+            var result = f[0];
+            var term = 1;
+            for (var j = 1; j < n; j++) {
+                term *= (xi[i] - x[j - 1]);
+                result += f[j] * term;
+            }
+            newtonValues.push(result);
+        }
+        return newtonValues;
+    }
+</script>
+</body>
+</html>

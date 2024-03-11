@@ -23,6 +23,9 @@ const NavigationBar = () => {
                 <li className="navbar__item">
                     <Link to="/L5" className="navbar__link">Л5<i data-feather="users"></i><span>Построение интерполяционных многочленов Лагранжа и Ньютона</span></Link>        
                 </li>
+                <li className="navbar__item">
+                    <Link to="/L6" className="navbar__link">Л6<i data-feather="users"></i><span>Выбор метода вычисленийа</span></Link>        
+                </li>
             </ul>
             </nav>
         </>

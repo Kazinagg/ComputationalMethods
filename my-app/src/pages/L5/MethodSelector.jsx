@@ -18,15 +18,18 @@ const MethodSelector = () => {
 
   return (
     <div>
-      <h2>Выберите метод</h2>
-      <select style={{}} value={selectedMethod} onChange={(e) => setSelectedMethod(e.target.value)}>
-        <option value="Newton">полином Ньютона</option>
-        <option value="Lagrange">полином Лагранжа</option>
-        <option value="Splane">Кубический сплайн</option>
-      </select>
-      {selectedMethod === 'Newton' && <Newton data={data}/>}
-      {selectedMethod === 'Lagrange' && <Lagrange data={data}/>}
-      {selectedMethod === 'Splane' && <Splane />}
+      <div>
+        <h2>Выберите метод</h2>
+        <select style={{}} value={selectedMethod} onChange={(e) => setSelectedMethod(e.target.value)}>
+          <option value="Newton">полином Ньютона</option>
+          <option value="Lagrange">полином Лагранжа</option>
+          <option value="Splane">Кубический сплайн</option>
+        </select>
+        
+      </div>
+      {selectedMethod === 'Newton' && <Newton data={[...data]}/>}
+      {selectedMethod === 'Lagrange' && <Lagrange data={[...data]}/>}
+      {selectedMethod === 'Splane' && <Splane data={[...data]}/>}
     </div>
   );
 };
